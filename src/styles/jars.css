@@ -1,0 +1,557 @@
+/* =============================
+   GLOBAL GAME THEME
+============================= */
+/* 
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;   /* 🚫 no scrolling */
+/* } */
+
+body {
+    margin: 0;
+    background: radial-gradient(circle at top, #2c3e50, #0b1320);
+    font-family: "Trebuchet MS", Arial, sans-serif;
+  }
+  
+  .app {
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    background: radial-gradient(circle at top, #2c3e50, #0b1320);
+    font-family: "Trebuchet MS", Arial, sans-serif;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* vertical center */
+    align-items: center;       /* horizontal center */
+  }
+  
+  /* =============================
+     TITLES
+  ============================= */
+  
+  h1 {
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: #00e5ff;
+    text-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+  }
+  
+  h3 {
+    margin-top: 10px;
+    color: #ffeb3b;
+    font-weight: bold;
+  }
+  
+  /* =============================
+     BUTTONS (Arcade style)
+  ============================= */
+  
+  button {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 2px solid #00e5ff;
+    background: linear-gradient(#004d60, #001b24);
+    color: #00e5ff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+    transition: all 0.2s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(#00acc1, #004d60);
+    color: #001b24;
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.8);
+  }
+  
+  /* =============================
+     INPUTS
+  ============================= */
+  
+  input {
+    padding: 12px;
+    width: 220px;
+    margin: 10px;
+    border-radius: 8px;
+    border: 2px solid #00e5ff;
+    background: #001b24;
+    color: #00e5ff;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  /* =============================
+     JAR AREA
+  ============================= */
+  
+  .jars-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 220px;
+    margin-top: 50px;
+  }
+  
+  /* Each bottle + controls */
+  .jar-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  /* =============================
+     JAR BODY
+  ============================= */
+  
+  .jar {
+    width: 200px;
+    border: 5px solid #cfd8dc;
+    border-radius: 0 0 30px 30px;
+    background: linear-gradient(#fafafa, #b0bec5);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      inset 0 0 15px rgba(0,0,0,0.5),
+      0 0 25px rgba(0, 229, 255, 0.3);
+  }
+  
+  /* =============================
+     WATER
+  ============================= */
+  
+  .water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(#00e5ff, #01579b);
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.4);
+    transition: height 0.6s ease;
+  }
+  
+  /* =============================
+     LABEL
+  ============================= */
+  
+  .jar-label {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffeb3b;
+    text-shadow: 0 0 6px rgba(255,235,59,0.6);
+  }
+  
+  /* =============================
+     CONTROLS
+  ============================= */
+  
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 170px;
+  }
+  
+  /* =============================
+     BOTTOM NAV
+  ============================= */
+  
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 140px;     /* big, dramatic separation */
+    margin-top: 10px;
+  }
+  
+  /* =============================
+     WIN / ERROR
+  ============================= */
+  
+  .win {
+    background: linear-gradient(#00c853, #006400);
+    color: #eaffea;
+    padding: 15px 30px;
+    margin: 20px auto;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(0, 255, 100, 0.8);
+  }
+  
+  .error {
+    background: linear-gradient(#b71c1c, #4a0000);
+    color: #ffdada;
+    padding: 12px 20px;
+    margin: 15px auto;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  }
+
+  .game-screen {
+    justify-content: flex-start;   /* game flows downward */
+    padding-top: 30px;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    margin-top: 40px;
+  }
+  .form-hint {
+    margin-top: 20px;
+    color: #00e5ff;
+    font-size: 14px;
+    opacity: 0.8;
+    text-shadow: 0 0 6px rgba(0,229,255,0.6);
+  }
+  /* =============================
+   MISSION PANEL (Top HUD)
+============================= */
+
+.mission-panel {
+    display: flex;
+    gap: 30px;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid #00e5ff;
+    border-radius: 10px;
+    padding: 8px 10px;
+    box-shadow: 0 0 15px rgba(0,229,255,0.5);
+    margin-bottom: 10px;
+  }
+  
+  .mission-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #00e5ff;
+    font-size: 15px;
+    text-shadow: 0 0 8px rgba(0,229,255,0.6);
+  }
+  
+  .mission-item .value {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffeb3b;
+  }
+  
+  .mission-item.target {
+    color: #ff5252;
+    animation: pulse 1.2s infinite alternate;
+  }
+  
+  /* =============================
+     ANIMATIONS
+  ============================= */
+  
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to   { transform: scale(1.08); }
+  }
+  
+  .jar {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  button {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    transition: 0.6s;
+  }
+  
+  button:hover::after {
+    left: 120%;
+  }
+  
+  .water {
+    animation: waterGlow 2s infinite alternate;
+  }
+  
+  @keyframes waterGlow {
+    from { box-shadow: inset 0 0 10px rgba(255,255,255,0.3); }
+    to   { box-shadow: inset 0 0 20px rgba(0,229,255,0.8); }
+  }
+  
+
+  /* =============================
+   BUTTON ANIMATIONS
+============================= */
+button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    transition: 0.6s;
+  }
+  
+  button:hover::after {
+    left: 120%;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+  }
+  
+  /* =============================
+     FLOATING JARS
+  ============================= */
+  .jar {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  /* =============================
+     WATER SHIMMER
+  ============================= */
+  .water {
+    animation: waterGlow 2s infinite alternate;
+  }
+  
+  @keyframes waterGlow {
+    from { box-shadow: inset 0 0 10px rgba(255,255,255,0.3); }
+    to   { box-shadow: inset 0 0 20px rgba(0,229,255,0.8); }
+  }
+  
+  /* =============================
+     MISSION PANEL / TARGET PULSE
+  ============================= */
+  .mission-item.target {
+    animation: pulse 1.2s infinite alternate;
+  }
+  
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to   { transform: scale(1.08); }
+  }
+  
+  /* =============================
+     WIN / ERROR POPUP
+  ============================= */
+  .win, .error {
+    transform: scale(0);
+    animation: pop 0.4s forwards;
+  }
+  
+  @keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+  
+  /* =============================
+     SCREEN TRANSITIONS (fade-in)
+  ============================= */
+  .app {
+    opacity: 0;
+    animation: fadeIn 0.6s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
+  /* =============================
+     INPUT FOCUS GLOW
+  ============================= */
+  input:focus {
+    border-color: #00e5ff;
+    box-shadow: 0 0 15px rgba(0,229,255,0.5);
+    outline: none;
+    transform: scale(1.02);
+  }
+  
+
+  /* =============================
+   WIN MODAL
+============================= */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.4s ease;
+}
+
+.win-modal {
+  background: linear-gradient(#001b24, #000);
+  border: 3px solid #00e5ff;
+  border-radius: 20px;
+  padding: 40px 50px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.9);
+  animation: pop 0.5s ease;
+}
+
+.win-modal h2 {
+  color: #00e5ff;
+  font-size: 32px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(0,229,255,0.8);
+}
+
+.win-modal p {
+  color: #ffeb3b;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* =============================
+   MODAL ANIMATIONS
+============================= */
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* =============================
+   HOW TO PLAY PANEL (HOME)
+============================= */
+
+.how-to-play {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 2px solid #00e5ff;
+  border-radius: 16px;
+  box-shadow:
+    0 0 25px rgba(0, 229, 255, 0.4),
+    inset 0 0 20px rgba(0, 229, 255, 0.15);
+  text-align: left;
+  animation: fadeIn 0.8s ease;
+}
+
+/* Title */
+.how-to-play h2 {
+  text-align: center;
+  color: #00e5ff;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.8);
+}
+
+/* Section headings */
+.how-to-play h3 {
+  color: #ffeb3b;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-shadow: 0 0 8px rgba(255, 235, 59, 0.7);
+}
+
+/* Paragraph text */
+.how-to-play p {
+  color: #cfd8dc;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Lists */
+.how-to-play ul {
+  margin-left: 20px;
+  padding-left: 10px;
+}
+
+.how-to-play li {
+  color: #b2ebf2;
+  margin: 8px 0;
+  font-size: 15px;
+  position: relative;
+}
+
+/* Bullet glow */
+.how-to-play li::marker {
+  color: #00e5ff;
+}
+
+/* Mathematical hint highlight */
+.how-to-play code {
+  background: rgba(0, 229, 255, 0.15);
+  color: #00e5ff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  box-shadow: inset 0 0 6px rgba(0,229,255,0.5);
+}
+
+/* Subtle hover lift (game-card feel) */
+.how-to-play:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 35px rgba(0, 229, 255, 0.7),
+    inset 0 0 25px rgba(0, 229, 255, 0.2);
+  transition: 0.3s ease;
+}
+
+/* =============================
+   TIMER
+============================= */
+
+.timer {
+  font-size: 22px;
+  margin: 15px 0;
+  color: #ff5252;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 82, 82, 0.8);
+  animation: pulse 1s infinite alternate;
+}
+
+
