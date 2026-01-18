@@ -3,7 +3,7 @@ import Jar from "./components/Jar";
 import "./styles/jars.css";
 
 const STORAGE_KEY = "water-jar-game";
-const TIMER = 60;
+const TIMER = 300;
 
 /* ===============================
    Euclid
